@@ -86,8 +86,8 @@
     }
 
     .brand-logo-img {
-      width: 62px;
-      height: 62px;
+      width: 42px;
+      height: 42px;
       object-fit: contain;
       display: block;
       border-radius: 10px;
@@ -112,10 +112,10 @@
       gap: 10px;
       border: none;
       cursor: pointer;
-      padding: 14px 22px;
+      padding: 16px 26px;
       border-radius: 999px;
       font-weight: 700;
-      font-size: 14px;
+      font-size: 15px;
       transition: 0.25s ease;
     }
 
@@ -211,6 +211,13 @@
     .stat span {
       font-size: 13px;
       color: var(--muted);
+    }
+
+    .social-proof {
+      margin-top: 20px;
+      color: #8fa1ff;
+      font-size: 14px;
+      font-weight: 600;
     }
 
     .mockup {
@@ -324,7 +331,6 @@
 
     .steps,
     .categories,
-    .benefits,
     .faq,
     .features {
       display: grid;
@@ -338,10 +344,6 @@
 
     .categories {
       grid-template-columns: repeat(3, 1fr);
-    }
-
-    .benefits {
-      grid-template-columns: repeat(2, 1fr);
     }
 
     .features {
@@ -472,6 +474,13 @@
       box-shadow: 0 0 0 4px rgba(0, 194, 255, 0.12);
     }
 
+    .urgency {
+      color: #ffcc66;
+      font-size: 14px;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
     .form-message {
       margin-top: 14px;
       font-size: 14px;
@@ -494,20 +503,11 @@
 
     .footer-inner {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       gap: 20px;
       align-items: center;
+      text-align: center;
       flex-wrap: wrap;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .footer-links a:hover {
-      color: white;
     }
 
     @media (max-width: 980px) {
@@ -515,7 +515,6 @@
       .split,
       .steps,
       .categories,
-      .benefits,
       .features {
         grid-template-columns: 1fr;
       }
@@ -580,7 +579,7 @@
         <a href="#faq">FAQ</a>
       </div>
 
-      <a href="#waitlist" class="btn btn-primary">Join waitlist</a>
+      <a href="#waitlist" class="btn btn-primary">Get early access</a>
     </div>
   </nav>
 
@@ -588,14 +587,13 @@
     <div class="container hero-grid">
       <div>
         <div class="eyebrow">Launching soon in Dubai</div>
-        <h1>Exchange, sell, or give away items in Dubai.</h1>
+        <h1>Stop wasting money on unused items in Dubai.</h1>
         <p>
-          Turn unused items into something useful. Swap furniture, electronics,
-          home decor, and more — with or without cash.
+          Swap, sell or give away what you don’t need — and get something useful in return.
         </p>
 
         <div class="hero-actions">
-          <a href="#waitlist" class="btn btn-primary">Join the waitlist</a>
+          <a href="#waitlist" class="btn btn-primary">Get early access</a>
           <a href="#how" class="btn btn-secondary">See how it works</a>
         </div>
 
@@ -612,6 +610,14 @@
             <strong>Fast listing</strong>
             <span>Post an item and start getting interest quickly</span>
           </div>
+        </div>
+
+        <div class="social-proof">
+          Join 120+ people already interested in SwapSouk
+        </div>
+
+        <div style="margin-top:40px;">
+          <a href="#waitlist" class="btn btn-primary">Get early access now</a>
         </div>
       </div>
 
@@ -648,6 +654,26 @@
             <a href="#waitlist" class="btn btn-secondary" style="color:#0f172a; background:#eef2ff; border:none;">Message seller</a>
             <a href="#waitlist" class="btn btn-primary">Propose swap</a>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">You’ve seen this before</h2>
+      <div class="list">
+        <div class="list-item">
+          <div class="dot"></div>
+          <div>Selling on WhatsApp groups is messy and slow</div>
+        </div>
+        <div class="list-item">
+          <div class="dot"></div>
+          <div>You leave Dubai and waste money on furniture</div>
+        </div>
+        <div class="list-item">
+          <div class="dot"></div>
+          <div>You buy new things when someone nearby has it</div>
         </div>
       </div>
     </div>
@@ -741,34 +767,23 @@
         </div>
 
         <div class="card form-card" id="waitlist">
-          <h2 class="section-title" style="font-size:32px;">Join the waitlist</h2>
+          <h2 class="section-title" style="font-size:32px;">Get early access</h2>
           <p class="section-subtitle" style="font-size:16px; max-width:none; margin-top:12px;">
-            Get early access and be among the first to exchange items in Dubai.
+            Be among the first people to use SwapSouk in Dubai.
+          </p>
+
+          <p class="urgency">
+            Limited early access — we’re onboarding first users manually
           </p>
 
           <form id="waitlistForm" style="margin-top:24px;">
             <div class="field">
-              <label for="name">Name</label>
-              <input id="name" type="text" name="name" placeholder="Your name" required>
-            </div>
-
-            <div class="field">
               <label for="email">Email</label>
-              <input id="email" type="email" name="email" placeholder="you@example.com" required>
-            </div>
-
-            <div class="field">
-              <label for="usage">What would you use it for?</label>
-              <select id="usage" name="usage">
-                <option>Swapping items</option>
-                <option>Selling items</option>
-                <option>Finding free stuff</option>
-                <option>All of the above</option>
-              </select>
+              <input id="email" type="email" name="email" placeholder="Enter your email" required>
             </div>
 
             <button id="submitButton" type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;">
-              Join now
+              Get early access
             </button>
 
             <p id="formMessage" class="form-message"></p>
@@ -800,7 +815,7 @@
 
   <footer class="footer">
     <div class="container footer-inner">
-      <div><strong style="color:white;">SwapSouk</strong> — Exchange items in Dubai.</div>
+      <div><strong style="color:white;">SwapSouk</strong></div>
     </div>
   </footer>
 
@@ -820,9 +835,7 @@
       submitButton.textContent = "Sending...";
 
       const data = {
-        name: form.name.value.trim(),
-        email: form.email.value.trim(),
-        usage: form.usage.value
+        email: form.email.value.trim()
       };
 
       try {
@@ -849,7 +862,7 @@
         message.classList.add("error");
       } finally {
         submitButton.disabled = false;
-        submitButton.textContent = "Join now";
+        submitButton.textContent = "Get early access";
       }
     });
   </script>
