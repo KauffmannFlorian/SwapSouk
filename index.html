@@ -471,6 +471,20 @@
       box-shadow: 0 0 0 4px rgba(0, 194, 255, 0.12);
     }
 
+    .form-message {
+      margin-top: 14px;
+      font-size: 14px;
+      min-height: 20px;
+    }
+
+    .success {
+      color: #86efac;
+    }
+
+    .error {
+      color: #fca5a5;
+    }
+
     .footer {
       border-top: 1px solid rgba(255,255,255,0.08);
       padding: 26px 0 40px;
@@ -697,8 +711,8 @@
           <p>Perfect for expats, furnished apartments, quick moves, and temporary lifestyles.</p>
         </div>
         <div class="card">
-          <h3>Validation first</h3>
-          <p>Launch a clean landing page now, collect leads, and build the full marketplace later.</p>
+          <h3>Smart exchanges</h3>
+	  <p>Swap, sell, or give away items easily with flexible options that fit your needs.</p>
         </div>
       </div>
 
@@ -731,7 +745,7 @@
             Be among the first users in Dubai and help shape the product.
           </p>
 
-          <form action="https://formspree.io/f/YOUR_ID" method="POST" style="margin-top:24px;">
+          <form id="waitlistForm" style="margin-top:24px;">
             <div class="field">
               <label for="name">Name</label>
               <input id="name" type="text" name="name" placeholder="Your name" required>
@@ -752,9 +766,11 @@
               </select>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;">
+            <button id="submitButton" type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;">
               Join now
             </button>
+
+            <p id="formMessage" class="form-message"></p>
           </form>
         </div>
       </div>
@@ -774,8 +790,8 @@
           <p>Yes. Optional cash difference makes exchanges easier and more flexible.</p>
         </div>
         <div class="card">
-          <h3>Do I need to build the full platform now?</h3>
-          <p>No. Start with this landing page, collect interest, and validate demand first.</p>
+          <h3>Is the platform available now?</h3>
+	  <p>We are launching soon in Dubai. Join the waitlist to get early access.</p>
         </div>
       </div>
     </div>
@@ -791,5 +807,55 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    const form = document.getElementById("waitlistForm");
+    const message = document.getElementById("formMessage");
+    const submitButton = document.getElementById("submitButton");
+
+    const SCRIPT_URL = "YOUR_GOOGLE_SCRIPT_URL";
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      message.textContent = "";
+      message.className = "form-message";
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+
+      const data = {
+        name: form.name.value.trim(),
+        email: form.email.value.trim(),
+        usage: form.usage.value
+      };
+
+      try {
+        const response = await fetch(SCRIPT_URL, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          message.textContent = "Thanks — you’re on the waitlist.";
+          message.classList.add("success");
+          form.reset();
+        } else {
+          message.textContent = "Something went wrong. Please try again.";
+          message.classList.add("error");
+        }
+      } catch (error) {
+        message.textContent = "Unable to submit right now. Please try again.";
+        message.classList.add("error");
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "Join now";
+      }
+    });
+  </script>
 </body>
 </html>
