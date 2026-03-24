@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SwapSouk - Exchange Items in Dubai</title>
+  <title>SwapSouk - Dubai’s easiest way to turn unused items into value</title>
   <link rel="icon" type="image/png" href="logo.png">
   <link rel="shortcut icon" href="logo.png">
   <link rel="apple-touch-icon" href="logo.png">
@@ -21,9 +21,11 @@
       --primary: #7c5cff;
       --primary-2: #00c2ff;
       --accent: #22c55e;
+      --warning: #ffcc66;
       --white: #ffffff;
       --dark: #0f172a;
       --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.22);
       --radius-xl: 28px;
       --radius-lg: 20px;
       --radius-md: 14px;
@@ -117,6 +119,7 @@
       font-weight: 700;
       font-size: 15px;
       transition: 0.25s ease;
+      white-space: nowrap;
     }
 
     .btn-primary {
@@ -146,7 +149,7 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.08fr 0.92fr;
       gap: 48px;
       align-items: center;
     }
@@ -168,7 +171,7 @@
       font-size: 64px;
       line-height: 1;
       letter-spacing: -0.05em;
-      max-width: 700px;
+      max-width: 760px;
     }
 
     .hero p {
@@ -176,7 +179,7 @@
       color: var(--muted);
       font-size: 18px;
       line-height: 1.75;
-      max-width: 620px;
+      max-width: 650px;
     }
 
     .hero-actions {
@@ -186,12 +189,25 @@
       margin-top: 30px;
     }
 
+    .social-proof {
+      margin-top: 18px;
+      color: #8fa1ff;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .micro-proof {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       margin-top: 34px;
-      max-width: 620px;
+      max-width: 700px;
     }
 
     .stat {
@@ -199,7 +215,7 @@
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 18px;
       padding: 18px;
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-soft);
     }
 
     .stat strong {
@@ -211,13 +227,6 @@
     .stat span {
       font-size: 13px;
       color: var(--muted);
-    }
-
-    .social-proof {
-      margin-top: 20px;
-      color: #8fa1ff;
-      font-size: 14px;
-      font-weight: 600;
     }
 
     .mockup {
@@ -311,7 +320,7 @@
     }
 
     .section {
-      padding: 34px 0 90px;
+      padding: 38px 0 92px;
     }
 
     .section-title {
@@ -326,7 +335,7 @@
       color: var(--muted);
       font-size: 18px;
       line-height: 1.75;
-      max-width: 720px;
+      max-width: 760px;
     }
 
     .steps,
@@ -431,6 +440,51 @@
       flex-shrink: 0;
     }
 
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 34px;
+    }
+
+    .pain-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .pain-card strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .pain-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+    }
+
+    .trust-item {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
     .form-card {
       background:
         linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.08));
@@ -448,8 +502,7 @@
       margin-bottom: 18px;
     }
 
-    input,
-    select {
+    input {
       width: 100%;
       padding: 15px 16px;
       border-radius: 16px;
@@ -464,21 +517,22 @@
       color: #c1c8e5;
     }
 
-    select option {
-      color: #111;
-    }
-
-    input:focus,
-    select:focus {
+    input:focus {
       border-color: rgba(0, 194, 255, 0.8);
       box-shadow: 0 0 0 4px rgba(0, 194, 255, 0.12);
     }
 
     .urgency {
-      color: #ffcc66;
+      color: var(--warning);
       font-size: 14px;
       margin-top: 10px;
       font-weight: 600;
+    }
+
+    .form-help {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
     }
 
     .form-message {
@@ -493,6 +547,25 @@
 
     .error {
       color: #fca5a5;
+    }
+
+    .cta-band {
+      margin-top: 30px;
+      padding: 22px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(124, 92, 255, 0.18), rgba(0, 194, 255, 0.14));
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .cta-band p {
+      margin: 0;
+      color: #dfe6ff;
+      font-size: 16px;
+      line-height: 1.6;
     }
 
     .footer {
@@ -515,7 +588,9 @@
       .split,
       .steps,
       .categories,
-      .features {
+      .features,
+      .pain-grid,
+      .trust-strip {
         grid-template-columns: 1fr;
       }
 
@@ -533,6 +608,11 @@
 
       .hero-stats {
         grid-template-columns: 1fr;
+      }
+
+      .cta-band {
+        flex-direction: column;
+        align-items: stretch;
       }
     }
 
@@ -561,6 +641,11 @@
       .hero-actions {
         flex-direction: column;
       }
+
+      .brand-logo-img {
+        width: 38px;
+        height: 38px;
+      }
     }
   </style>
 </head>
@@ -574,9 +659,9 @@
 
       <div class="nav-links">
         <a href="#how">How it works</a>
+        <a href="#pain">Why now</a>
         <a href="#categories">Categories</a>
         <a href="#waitlist">Waitlist</a>
-        <a href="#faq">FAQ</a>
       </div>
 
       <a href="#waitlist" class="btn btn-primary">Get early access</a>
@@ -587,9 +672,9 @@
     <div class="container hero-grid">
       <div>
         <div class="eyebrow">Launching soon in Dubai</div>
-        <h1>Stop wasting money on unused items in Dubai.</h1>
+        <h1>Dubai’s easiest way to turn unused items into value.</h1>
         <p>
-          Swap, sell or give away what you don’t need — and get something useful in return.
+          Swap, sell or give away what you don’t need — and get something useful in return, without messy chats or wasted listings.
         </p>
 
         <div class="hero-actions">
@@ -597,23 +682,27 @@
           <a href="#how" class="btn btn-secondary">See how it works</a>
         </div>
 
+        <div class="social-proof">
+          Join 120+ people already interested in SwapSouk
+        </div>
+
+        <div class="micro-proof">
+          Early access for Dubai-based users starts first.
+        </div>
+
         <div class="hero-stats">
           <div class="stat">
             <strong>Swap + cash</strong>
-            <span>Flexible deals to make exchanges easier</span>
+            <span>Flexible deals make exchanges easier to close</span>
           </div>
           <div class="stat">
-            <strong>Dubai focused</strong>
-            <span>Built for expats and fast-moving lifestyles</span>
+            <strong>Built for Dubai</strong>
+            <span>Ideal for expats, movers, and fast-changing lifestyles</span>
           </div>
           <div class="stat">
-            <strong>Fast listing</strong>
-            <span>Post an item and start getting interest quickly</span>
+            <strong>Faster than groups</strong>
+            <span>Less noise, less waste, more useful deals</span>
           </div>
-        </div>
-
-        <div class="social-proof">
-          Join 120+ people already interested in SwapSouk
         </div>
 
         <div style="margin-top:40px;">
@@ -625,10 +714,10 @@
         <div class="mockup-card">
           <div class="mockup-top">
             <div>
-              <div class="tag">Swap or Sell</div>
+              <div class="tag">Featured item</div>
               <div class="mockup-title">Modern sofa in Dubai Marina</div>
             </div>
-            <div class="tag">AED 1,200</div>
+            <div class="tag">Swap or Sell</div>
           </div>
 
           <div class="mockup-gallery">
@@ -641,12 +730,12 @@
 
           <div class="mockup-meta">
             <div class="meta-box">
-              <strong>Looking for</strong>
-              <span>Desk, coffee table, or cash difference</span>
+              <strong>Estimated value</strong>
+              <span>AED 1,200</span>
             </div>
             <div class="meta-box">
-              <strong>Location</strong>
-              <span>Dubai Marina</span>
+              <strong>Looking for</strong>
+              <span>Desk or cash difference</span>
             </div>
           </div>
 
@@ -659,31 +748,42 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="pain">
     <div class="container">
-      <h2 class="section-title">You’ve seen this before</h2>
-      <div class="list">
-        <div class="list-item">
-          <div class="dot"></div>
-          <div>Selling on WhatsApp groups is messy and slow</div>
+      <h2 class="section-title">Why Dubai needs this</h2>
+      <p class="section-subtitle">
+        People move fast here. Furniture gets sold at a loss, useful items sit unused, and WhatsApp groups turn into chaos.
+      </p>
+
+      <div class="pain-grid">
+        <div class="pain-card">
+          <strong>Messy selling channels</strong>
+          <p>Selling through random chats and group posts is slow, noisy, and frustrating.</p>
         </div>
-        <div class="list-item">
-          <div class="dot"></div>
-          <div>You leave Dubai and waste money on furniture</div>
+        <div class="pain-card">
+          <strong>Money gets left behind</strong>
+          <p>When people move apartments or leave Dubai, they often lose value on perfectly good items.</p>
         </div>
-        <div class="list-item">
-          <div class="dot"></div>
-          <div>You buy new things when someone nearby has it</div>
+        <div class="pain-card">
+          <strong>Useful items stay unused</strong>
+          <p>Someone nearby may need exactly what you no longer use — but there’s no simple local flow for it.</p>
         </div>
+      </div>
+
+      <div class="cta-band">
+        <p>
+          SwapSouk helps people turn unused items into value — through swaps, resale, or simple giveaways.
+        </p>
+        <a href="#waitlist" class="btn btn-primary">Reserve your spot</a>
       </div>
     </div>
   </section>
 
   <section class="section" id="how">
     <div class="container">
-      <h2 class="section-title">A smarter way to rehome items in Dubai.</h2>
+      <h2 class="section-title">A smarter way to rehome items in Dubai</h2>
       <p class="section-subtitle">
-        Simple, fast, and designed to make exchanges effortless in everyday life.
+        Simple, fast, and designed to make local exchanges feel practical, trustworthy, and worth doing.
       </p>
 
       <div class="steps">
@@ -695,15 +795,21 @@
 
         <div class="card">
           <div class="step-number">2</div>
-          <h3>Get matched</h3>
-          <p>Connect with people in Dubai interested in your item or open to exchange.</p>
+          <h3>Get interest</h3>
+          <p>Connect with people in Dubai who want your item or can offer something useful back.</p>
         </div>
 
         <div class="card">
           <div class="step-number">3</div>
-          <h3>Trade or collect</h3>
-          <p>Agree on a swap, optional cash difference, or a simple pickup.</p>
+          <h3>Close the deal</h3>
+          <p>Swap, sell, add a cash difference, or arrange a simple pickup.</p>
         </div>
+      </div>
+
+      <div class="trust-strip">
+        <div class="trust-item">Early access launched for Dubai users first</div>
+        <div class="trust-item">Flexible: swap, sell, or giveaway</div>
+        <div class="trust-item">Built for real day-to-day use, not just browsing</div>
       </div>
     </div>
   </section>
@@ -712,7 +818,7 @@
     <div class="container">
       <h2 class="section-title">Popular categories</h2>
       <p class="section-subtitle">
-        Focus on high-demand items that move fast with expats, new arrivals, and people relocating.
+        Start with the items that move fast for expats, relocations, and people setting up life quickly in Dubai.
       </p>
 
       <div class="categories">
@@ -731,15 +837,15 @@
       <div class="features">
         <div class="card">
           <h3>Flexible deals</h3>
-          <p>Not just barter. Add a cash difference when needed and make more swaps happen.</p>
+          <p>Not just barter. Add a cash difference when needed and make more exchanges happen.</p>
         </div>
         <div class="card">
           <h3>Built for Dubai</h3>
-          <p>Perfect for expats, furnished apartments, quick moves, and temporary lifestyles.</p>
+          <p>Perfect for expats, furnished apartments, fast moves, and temporary lifestyles.</p>
         </div>
         <div class="card">
-          <h3>Smart exchanges</h3>
-          <p>Swap, sell, or give away items easily with flexible options that fit your needs.</p>
+          <h3>More value, less waste</h3>
+          <p>Recover value from items you no longer need instead of leaving them behind or selling too low.</p>
         </div>
       </div>
 
@@ -757,11 +863,11 @@
             </div>
             <div class="list-item">
               <div class="dot"></div>
-              <div>Make exchanges simpler than messy chats in random groups</div>
+              <div>Avoid messy back-and-forth in random chats and groups</div>
             </div>
             <div class="list-item">
               <div class="dot"></div>
-              <div>Create a local, practical alternative to classified ads</div>
+              <div>Find useful items locally without starting from zero</div>
             </div>
           </div>
         </div>
@@ -773,7 +879,7 @@
           </p>
 
           <p class="urgency">
-            Limited early access — we’re onboarding first users manually
+            Limited early access — first users are being onboarded manually
           </p>
 
           <form id="waitlistForm" style="margin-top:24px;">
@@ -785,6 +891,10 @@
             <button id="submitButton" type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;">
               Get early access
             </button>
+
+            <div class="form-help">
+              No spam. Just launch updates and early access details.
+            </div>
 
             <p id="formMessage" class="form-message"></p>
           </form>
@@ -824,7 +934,7 @@
     const message = document.getElementById("formMessage");
     const submitButton = document.getElementById("submitButton");
 
-    const SCRIPT_URL = "YOUR_GOOGLE_SCRIPT_URL";
+    const ZAPIER_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/25303193/uppcrt4/";
 
     form.addEventListener("submit", async function (e) {
       e.preventDefault();
@@ -834,29 +944,28 @@
       submitButton.disabled = true;
       submitButton.textContent = "Sending...";
 
+      const email = form.email.value.trim();
+
       const data = {
-        email: form.email.value.trim()
+        email: email,
+        source: "SwapSouk Landing Page",
+        page: window.location.href,
+        submitted_at: new Date().toISOString()
       };
 
       try {
-        const response = await fetch(SCRIPT_URL, {
+        await fetch(ZAPIER_WEBHOOK_URL, {
           method: "POST",
-          body: JSON.stringify(data),
           headers: {
             "Content-Type": "application/json"
-          }
+          },
+          body: JSON.stringify(data),
+          mode: "cors"
         });
 
-        const result = await response.json();
-
-        if (result.success) {
-          message.textContent = "Thanks — you’re on the waitlist.";
-          message.classList.add("success");
-          form.reset();
-        } else {
-          message.textContent = "Something went wrong. Please try again.";
-          message.classList.add("error");
-        }
+        message.textContent = "Thanks — you’re on the waitlist.";
+        message.classList.add("success");
+        form.reset();
       } catch (error) {
         message.textContent = "Unable to submit right now. Please try again.";
         message.classList.add("error");
