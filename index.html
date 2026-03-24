@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SwapSouk - Exchange Items in Dubai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #121933;
+      --card: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --text: #f5f7ff;
+      --muted: #b7bfdc;
+      --primary: #7c5cff;
+      --primary-2: #00c2ff;
+      --accent: #22c55e;
+      --white: #ffffff;
+      --dark: #0f172a;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(124, 92, 255, 0.22), transparent 28%),
+        radial-gradient(circle at top right, rgba(0, 194, 255, 0.18), transparent 25%),
+        linear-gradient(180deg, #0b1020 0%, #111833 52%, #0c1224 100%);
+      color: var(--text);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(11, 16, 32, 0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-badge {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 10px 25px rgba(124, 92, 255, 0.4);
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: white;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: white;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: none;
+      cursor: pointer;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: 0.25s ease;
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 14px 34px rgba(72, 118, 255, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(72, 118, 255, 0.45);
+    }
+
+    .btn-secondary {
+      color: white;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .hero {
+      padding: 88px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      color: #d8ddff;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 64px;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      max-width: 700px;
+    }
+
+    .hero p {
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+      max-width: 620px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 34px;
+      max-width: 620px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .stat span {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .mockup {
+      position: relative;
+      padding: 18px;
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.05));
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow);
+    }
+
+    .mockup-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f3f7ff 100%);
+      color: var(--dark);
+      border-radius: 26px;
+      padding: 22px;
+    }
+
+    .tag {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #eef2ff;
+      color: #4f46e5;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .mockup-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .mockup-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-top: 8px;
+    }
+
+    .mockup-gallery {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 12px;
+      height: 250px;
+      margin: 22px 0;
+    }
+
+    .ph-big,
+    .ph-small {
+      border-radius: 22px;
+      background:
+        linear-gradient(135deg, rgba(124,92,255,0.18), rgba(0,194,255,0.16)),
+        #dde7ff;
+    }
+
+    .ph-column {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mockup-meta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .meta-box {
+      background: #f8fafc;
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .meta-box strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 6px;
+    }
+
+    .meta-box span {
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    .mockup-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .section {
+      padding: 34px 0 90px;
+    }
+
+    .section-title {
+      font-size: 42px;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin: 0;
+    }
+
+    .section-subtitle {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+      max-width: 720px;
+    }
+
+    .steps,
+    .categories,
+    .benefits,
+    .faq,
+    .features {
+      display: grid;
+      gap: 20px;
+      margin-top: 34px;
+    }
+
+    .steps {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .categories {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .benefits {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .features {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .faq {
+      grid-template-columns: 1fr;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      margin: 14px 0 10px;
+      font-size: 22px;
+      letter-spacing: -0.03em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+      box-shadow: 0 12px 24px rgba(124, 92, 255, 0.35);
+    }
+
+    .category-card {
+      text-align: center;
+      font-weight: 700;
+      font-size: 18px;
+      padding: 28px 20px;
+    }
+
+    .gradient-card {
+      background:
+        linear-gradient(135deg, rgba(124, 92, 255, 0.16), rgba(0, 194, 255, 0.12)),
+        rgba(255,255,255,0.06);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 34px;
+    }
+
+    .list {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .list-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: rgba(255,255,255,0.06);
+      padding: 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      margin-top: 6px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), #86efac);
+      flex-shrink: 0;
+    }
+
+    .form-card {
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.08));
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #edf1ff;
+    }
+
+    .field {
+      margin-bottom: 18px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 15px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.08);
+      color: white;
+      font: inherit;
+      outline: none;
+    }
+
+    input::placeholder {
+      color: #c1c8e5;
+    }
+
+    select option {
+      color: #111;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: rgba(0, 194, 255, 0.8);
+      box-shadow: 0 0 0 4px rgba(0, 194, 255, 0.12);
+    }
+
+    .footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 26px 0 40px;
+      color: var(--muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .split,
+      .steps,
+      .categories,
+      .benefits,
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 48px;
+      }
+
+      .hero {
+        padding-top: 56px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      h1 {
+        font-size: 40px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .mockup-gallery {
+        height: 210px;
+      }
+
+      .mockup-meta,
+      .mockup-actions {
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand">
+        <div class="brand-badge">S</div>
+        <div>SwapSouk</div>
+      </div>
+
+      <div class="nav-links">
+        <a href="#how">How it works</a>
+        <a href="#categories">Categories</a>
+        <a href="#waitlist">Waitlist</a>
+        <a href="#faq">FAQ</a>
+      </div>
+
+      <a href="#waitlist" class="btn btn-primary">Join waitlist</a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Launching soon in Dubai</div>
+        <h1>Exchange, sell, or give away items in Dubai.</h1>
+        <p>
+          Turn unused items into something useful. Swap furniture, electronics,
+          home decor, and more — with or without cash.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#waitlist" class="btn btn-primary">Join the waitlist</a>
+          <a href="#how" class="btn btn-secondary">See how it works</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>Swap + cash</strong>
+            <span>Flexible deals to make exchanges easier</span>
+          </div>
+          <div class="stat">
+            <strong>Dubai focused</strong>
+            <span>Built for expats and fast-moving lifestyles</span>
+          </div>
+          <div class="stat">
+            <strong>Fast listing</strong>
+            <span>Post an item and start getting interest quickly</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mockup">
+        <div class="mockup-card">
+          <div class="mockup-top">
+            <div>
+              <div class="tag">Swap or Sell</div>
+              <div class="mockup-title">Modern sofa in Dubai Marina</div>
+            </div>
+            <div class="tag">AED 1,200</div>
+          </div>
+
+          <div class="mockup-gallery">
+            <div class="ph-big"></div>
+            <div class="ph-column">
+              <div class="ph-small"></div>
+              <div class="ph-small"></div>
+            </div>
+          </div>
+
+          <div class="mockup-meta">
+            <div class="meta-box">
+              <strong>Looking for</strong>
+              <span>Desk, coffee table, or cash difference</span>
+            </div>
+            <div class="meta-box">
+              <strong>Location</strong>
+              <span>Dubai Marina</span>
+            </div>
+          </div>
+
+          <div class="mockup-actions">
+            <a href="#waitlist" class="btn btn-secondary" style="color:#0f172a; background:#eef2ff; border:none;">Message seller</a>
+            <a href="#waitlist" class="btn btn-primary">Propose swap</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <div class="container">
+      <h2 class="section-title">A smarter way to rehome items in Dubai.</h2>
+      <p class="section-subtitle">
+        Start simple, validate demand, and make swapping feel modern, easy, and trustworthy.
+      </p>
+
+      <div class="steps">
+        <div class="card">
+          <div class="step-number">1</div>
+          <h3>Post an item</h3>
+          <p>Upload what you want to swap, sell, or give away in a few clicks.</p>
+        </div>
+
+        <div class="card">
+          <div class="step-number">2</div>
+          <h3>Get matched</h3>
+          <p>Connect with people in Dubai interested in your item or open to exchange.</p>
+        </div>
+
+        <div class="card">
+          <div class="step-number">3</div>
+          <h3>Trade or collect</h3>
+          <p>Agree on a swap, optional cash difference, or a simple pickup.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="categories">
+    <div class="container">
+      <h2 class="section-title">Popular categories</h2>
+      <p class="section-subtitle">
+        Focus on high-demand items that move fast with expats, new arrivals, and people relocating.
+      </p>
+
+      <div class="categories">
+        <div class="card category-card gradient-card">Furniture</div>
+        <div class="card category-card gradient-card">Electronics</div>
+        <div class="card category-card gradient-card">Home decor</div>
+        <div class="card category-card gradient-card">Baby items</div>
+        <div class="card category-card gradient-card">Fashion</div>
+        <div class="card category-card gradient-card">Free stuff</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="features">
+        <div class="card">
+          <h3>Flexible deals</h3>
+          <p>Not just barter. Add a cash difference when needed and make more swaps happen.</p>
+        </div>
+        <div class="card">
+          <h3>Built for Dubai</h3>
+          <p>Perfect for expats, furnished apartments, quick moves, and temporary lifestyles.</p>
+        </div>
+        <div class="card">
+          <h3>Validation first</h3>
+          <p>Launch a clean landing page now, collect leads, and build the full marketplace later.</p>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="card">
+          <h2 class="section-title" style="font-size:32px;">Why people will use it</h2>
+          <div class="list">
+            <div class="list-item">
+              <div class="dot"></div>
+              <div>Swap, sell, or give away from one place</div>
+            </div>
+            <div class="list-item">
+              <div class="dot"></div>
+              <div>Reduce waste and recover value from unused items</div>
+            </div>
+            <div class="list-item">
+              <div class="dot"></div>
+              <div>Make exchanges simpler than messy chats in random groups</div>
+            </div>
+            <div class="list-item">
+              <div class="dot"></div>
+              <div>Create a local, practical alternative to classified ads</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card form-card" id="waitlist">
+          <h2 class="section-title" style="font-size:32px;">Join the waitlist</h2>
+          <p class="section-subtitle" style="font-size:16px; max-width:none; margin-top:12px;">
+            Be among the first users in Dubai and help shape the product.
+          </p>
+
+          <form action="https://formspree.io/f/YOUR_ID" method="POST" style="margin-top:24px;">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" type="text" name="name" placeholder="Your name" required>
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" type="email" name="email" placeholder="you@example.com" required>
+            </div>
+
+            <div class="field">
+              <label for="usage">What would you use it for?</label>
+              <select id="usage" name="usage">
+                <option>Swapping items</option>
+                <option>Selling items</option>
+                <option>Finding free stuff</option>
+                <option>All of the above</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;">
+              Join now
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <h2 class="section-title">Common questions</h2>
+      <div class="faq">
+        <div class="card">
+          <h3>Is this only for swaps?</h3>
+          <p>No. Users can swap, sell, or give away items depending on what works best.</p>
+        </div>
+        <div class="card">
+          <h3>Can users add cash to a deal?</h3>
+          <p>Yes. Optional cash difference makes exchanges easier and more flexible.</p>
+        </div>
+        <div class="card">
+          <h3>Do I need to build the full platform now?</h3>
+          <p>No. Start with this landing page, collect interest, and validate demand first.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div><strong style="color:white;">SwapSouk</strong> — Exchange items in Dubai.</div>
+      <div class="footer-links">
+        <a href="#">Instagram</a>
+        <a href="#">WhatsApp</a>
+        <a href="mailto:hello@swapsouk.com">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
