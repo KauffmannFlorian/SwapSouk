@@ -490,36 +490,12 @@
         linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.08));
     }
 
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 14px;
-      font-weight: 600;
-      color: #edf1ff;
-    }
-
-    .field {
-      margin-bottom: 18px;
-    }
-
-    input {
-      width: 100%;
-      padding: 15px 16px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.08);
-      color: white;
-      font: inherit;
-      outline: none;
-    }
-
-    input::placeholder {
-      color: #c1c8e5;
-    }
-
-    input:focus {
-      border-color: rgba(0, 194, 255, 0.8);
-      box-shadow: 0 0 0 4px rgba(0, 194, 255, 0.12);
+    .google-form-box {
+      margin-top: 24px;
+      padding: 24px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
     }
 
     .urgency {
@@ -533,20 +509,7 @@
       margin-top: 10px;
       color: var(--muted);
       font-size: 13px;
-    }
-
-    .form-message {
-      margin-top: 14px;
-      font-size: 14px;
-      min-height: 20px;
-    }
-
-    .success {
-      color: #86efac;
-    }
-
-    .error {
-      color: #fca5a5;
+      line-height: 1.7;
     }
 
     .cta-band {
@@ -664,7 +627,7 @@
         <a href="#waitlist">Waitlist</a>
       </div>
 
-      <a href="#waitlist" class="btn btn-primary">Get early access</a>
+      <a href="https://forms.gle/xi7jCbbLcUrUKBLf8" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get early access</a>
     </div>
   </nav>
 
@@ -678,7 +641,7 @@
         </p>
 
         <div class="hero-actions">
-          <a href="#waitlist" class="btn btn-primary">Get early access</a>
+          <a href="https://forms.gle/xi7jCbbLcUrUKBLf8" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get early access</a>
           <a href="#how" class="btn btn-secondary">See how it works</a>
         </div>
 
@@ -706,7 +669,7 @@
         </div>
 
         <div style="margin-top:40px;">
-          <a href="#waitlist" class="btn btn-primary">Get early access now</a>
+          <a href="https://forms.gle/xi7jCbbLcUrUKBLf8" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get early access now</a>
         </div>
       </div>
 
@@ -740,8 +703,8 @@
           </div>
 
           <div class="mockup-actions">
-            <a href="#waitlist" class="btn btn-secondary" style="color:#0f172a; background:#eef2ff; border:none;">Message seller</a>
-            <a href="#waitlist" class="btn btn-primary">Propose swap</a>
+            <a href="https://forms.gle/xi7jCbbLcUrUKBLf8" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="color:#0f172a; background:#eef2ff; border:none;">Join waitlist</a>
+            <a href="https://forms.gle/xi7jCbbLcUrUKBLf8" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Get early access</a>
           </div>
         </div>
       </div>
@@ -774,7 +737,7 @@
         <p>
           SwapSouk helps people turn unused items into value — through swaps, resale, or simple giveaways.
         </p>
-        <a href="#waitlist" class="btn btn-primary">Reserve your spot</a>
+        <a href="https://forms.gle/xi7jCbbLcUrUKBLf8" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Reserve your spot</a>
       </div>
     </div>
   </section>
@@ -882,22 +845,15 @@
             Limited early access — first users are being onboarded manually
           </p>
 
-          <form id="waitlistForm" style="margin-top:24px;">
-            <div class="field">
-              <label for="email">Email</label>
-              <input id="email" type="email" name="email" placeholder="Enter your email" required>
-            </div>
-
-            <button id="submitButton" type="submit" class="btn btn-primary" style="width:100%; margin-top:8px;">
-              Get early access
-            </button>
+          <div class="google-form-box">
+            <a href="https://forms.gle/xi7jCbbLcUrUKBLf8" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width:100%;">
+              Open the waitlist form
+            </a>
 
             <div class="form-help">
-              No spam. Just launch updates and early access details.
+              It takes less than a minute. Submit your email through our Google Form to reserve early access.
             </div>
-
-            <p id="formMessage" class="form-message"></p>
-          </form>
+          </div>
         </div>
       </div>
     </div>
@@ -928,52 +884,5 @@
       <div><strong style="color:white;">SwapSouk</strong></div>
     </div>
   </footer>
-
-  <script>
-    const form = document.getElementById("waitlistForm");
-    const message = document.getElementById("formMessage");
-    const submitButton = document.getElementById("submitButton");
-
-    const ZAPIER_WEBHOOK_URL = "https://hooks.zapier.com/hooks/catch/25303193/uppcrt4/";
-
-    form.addEventListener("submit", async function (e) {
-      e.preventDefault();
-
-      message.textContent = "";
-      message.className = "form-message";
-      submitButton.disabled = true;
-      submitButton.textContent = "Sending...";
-
-      const email = form.email.value.trim();
-
-      const data = {
-        email: email,
-        source: "SwapSouk Landing Page",
-        page: window.location.href,
-        submitted_at: new Date().toISOString()
-      };
-
-      try {
-        await fetch(ZAPIER_WEBHOOK_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(data),
-          mode: "cors"
-        });
-
-        message.textContent = "Thanks — you’re on the waitlist.";
-        message.classList.add("success");
-        form.reset();
-      } catch (error) {
-        message.textContent = "Unable to submit right now. Please try again.";
-        message.classList.add("error");
-      } finally {
-        submitButton.disabled = false;
-        submitButton.textContent = "Get early access";
-      }
-    });
-  </script>
 </body>
 </html>
